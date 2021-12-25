@@ -83,7 +83,7 @@ class SearchView extends GetView<SearchController> {
           );
         },
         child: const Icon(
-          Icons.chat_bubble_rounded,
+          Icons.chat,
           color: yelo,
         ),
       ),

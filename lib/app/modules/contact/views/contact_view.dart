@@ -38,30 +38,34 @@ class ContactView extends GetView<ContactController> {
             itemCount: controller.data.length,
             itemBuilder: (context, index) {
               UserModel data = controller.data.getAt(index);
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 2),
-                child: ListTile(
-                  onTap: () {
-                    controller.toChatroom(data);
-                  },
-                  title: Text(data.name!),
-                  leading: (data.profileUrl != '')
-                      ? CircleAvatar(
-                          backgroundImage: NetworkImage(data.profileUrl!),
-                        )
-                      : const CircleAvatar(
-                          child: Icon(Icons.person),
-                        ),
-                  trailing: IconButton(
-                      onPressed: () {
-                        controller.delete(index);
-                      },
-                      icon: const Icon(Icons.delete)),
-                ),
-              );
+              return contactTile(data, index);
             },
           );
         },
+      ),
+    );
+  }
+
+  Padding contactTile(UserModel data, int index) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: ListTile(
+        onTap: () {
+          controller.toChatroom(data);
+        },
+        title: Text(data.name!),
+        leading: (data.profileUrl != '')
+            ? CircleAvatar(
+                backgroundImage: NetworkImage(data.profileUrl!),
+              )
+            : const CircleAvatar(
+                child: Icon(Icons.person),
+              ),
+        trailing: IconButton(
+            onPressed: () {
+              controller.delete(index);
+            },
+            icon: const Icon(Icons.delete)),
       ),
     );
   }
