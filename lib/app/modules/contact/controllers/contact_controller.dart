@@ -60,7 +60,7 @@ class ContactController extends GetxController {
   }
 
   void addContactDeveloper() {
-    String? data = Instalasi().membacaInstall();
+    String? data = Instalasi().membacaContac();
     if (data == null) {
       UserHive().adddata(UserModel(
           email: 'amasparera@gmail.com',
