@@ -83,7 +83,7 @@ class ChatroomView extends GetView<ChatroomController> {
     );
   }
 
-  ListView listChat(AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
+  Widget listChat(AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
     return ListView.builder(
         controller: controller.scroll,
         itemCount: snapshot.data!.docs.length,
@@ -96,44 +96,36 @@ class ChatroomView extends GetView<ChatroomController> {
   Widget textTile(DocumentSnapshot doc) {
     String myUsername = UserDb().loadUserName();
     DateTime waktu = DateTime.parse(doc['ts'].toDate().toString());
-    return Row(
-      mainAxisAlignment: doc['sendBy'] == controller.myUsername
-          ? MainAxisAlignment.end
-          : MainAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-          child: Column(
-            crossAxisAlignment: doc['sendBy'] == controller.myUsername
-                ? CrossAxisAlignment.end
-                : CrossAxisAlignment.start,
-            children: [
-              Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  margin: const EdgeInsets.symmetric(vertical: 2),
-                  decoration: BoxDecoration(
-                      borderRadius: (doc['sendBy'] == myUsername)
-                          ? const BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8),
-                              bottomLeft: Radius.circular(8))
-                          : const BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8),
-                              bottomRight: Radius.circular(8)),
-                      color: (doc['sendBy'] == myUsername)
-                          ? Colors.blue[50]
-                          : Colors.blue[100]),
-                  child: Text(doc['message'])),
-              Text(
-                DateFormat.E().add_jm().format(waktu),
-                style: const TextStyle(fontSize: 10, color: Colors.black54),
-              )
-            ],
-          ),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+      child: Column(
+        crossAxisAlignment: doc['sendBy'] == controller.myUsername
+            ? CrossAxisAlignment.end
+            : CrossAxisAlignment.start,
+        children: [
+          Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              margin: const EdgeInsets.symmetric(vertical: 2),
+              decoration: BoxDecoration(
+                  borderRadius: (doc['sendBy'] == myUsername)
+                      ? const BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          topRight: Radius.circular(8),
+                          bottomLeft: Radius.circular(8))
+                      : const BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          topRight: Radius.circular(8),
+                          bottomRight: Radius.circular(8)),
+                  color: (doc['sendBy'] == myUsername)
+                      ? Colors.blue[50]
+                      : Colors.blue[100]),
+              child: Text(doc['message'])),
+          Text(
+            DateFormat.E().add_jm().format(waktu),
+            style: const TextStyle(fontSize: 10, color: Colors.black54),
+          )
+        ],
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flash_chat/app/data/firebase/database_method.dart';
+import 'package:flash_chat/app/data/getstoragedb/instalansi.dart';
 import 'package:flash_chat/app/data/getstoragedb/user_db.dart';
 import 'package:flash_chat/app/data/hivedb/user_hive.dart';
 import 'package:flash_chat/app/data/model/user.dart';
@@ -58,9 +59,24 @@ class ContactController extends GetxController {
     Get.offAndToNamed(Routes.CHATROOM, arguments: data.username);
   }
 
+  void addContactDeveloper() {
+    String? data = Instalasi().membacaInstall();
+    if (data == null) {
+      UserHive().adddata(UserModel(
+          email: 'amasparera@gmail.com',
+          name: 'amas parera',
+          profileUrl:
+              'https://lh3.googleusercontent.com/a-/AOh14GhhSrajmv2JwxEJM-0h9U9hfcBPrdexP_fnji3I=s96-c',
+          userid: 'pAWt7JpX8yNnoaCUoXWPasXUQXr2',
+          username: 'amasparera'));
+      Instalasi().contacKosong();
+    }
+  }
+
   @override
   void onInit() {
     getMyInfo();
+    addContactDeveloper();
     super.onInit();
   }
 }

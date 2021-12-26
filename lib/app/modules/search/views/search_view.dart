@@ -48,7 +48,14 @@ class SearchView extends GetView<SearchController> {
                 ? Center(
                     child: Text('" tidak menemukan user ${_.seacrh.text} "'),
                   )
-                : const SizedBox();
+                : Center(
+                    child: Row(
+                      children: const [
+                        Icon(Icons.search),
+                        Text('Seacrh user by "name"'),
+                      ],
+                    ),
+                  );
           }
           return ListView.builder(
               itemCount: _.listdata.length,
