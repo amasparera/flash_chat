@@ -16,6 +16,8 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   // ignore: constant_identifier_names
   static const CONTACT = _Paths.CONTACT;
+  // ignore: constant_identifier_names
+  static const CONNECTION = _Paths.CONNECTION;
 }
 
 abstract class _Paths {
@@ -31,4 +33,6 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   // ignore: constant_identifier_names
   static const CONTACT = '/contact';
+  // ignore: constant_identifier_names
+  static const CONNECTION = '/connection';
 }

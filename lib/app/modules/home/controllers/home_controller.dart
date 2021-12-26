@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flash_chat/app/data/firebase/auth_user.dart';
 import 'package:flash_chat/app/data/firebase/database_method.dart';
 import 'package:flash_chat/app/data/getstoragedb/instalansi.dart';
 import 'package:flash_chat/app/data/getstoragedb/user_db.dart';
 import 'package:flash_chat/app/data/model/user.dart';
+import 'package:flash_chat/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:random_string/random_string.dart';
 
@@ -79,7 +81,7 @@ class HomeController extends GetxController {
 
   addMassage(UserModel model) {
     String message =
-        'Selamat datang\nsaya selaku developer mengucapkan terimakasih sudah mengistal aplikasi FlashChat.\nbila ada yang perlu ditanyakan silahkan silahkan chat langsung disini.';
+        'Selamat datang\nsaya selaku developer mengucapkan terimakasih sudah mengistal aplikasi FlashChat.\nbila ada yang perlu ditanyakan silahkan silahkan chat langsung disini. \n \nSaya meminta maaf sebesar-besarnya fitur notifikasi pesan belum siap. developer tidak memiliki biaya untuk sewa firebase function';
 
     var lastMessageTs = DateTime.now();
 
@@ -131,5 +133,15 @@ class HomeController extends GetxController {
     // signOut();
 
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    Connectivity().onConnectivityChanged.listen((event) {
+      if (event == ConnectivityResult.none) {
+        Get.toNamed(Routes.CONNECTION);
+      }
+    });
+    super.onReady();
   }
 }

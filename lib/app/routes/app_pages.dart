@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
+import 'package:flash_chat/app/modules/connection/bindings/connection_binding.dart';
+import 'package:flash_chat/app/modules/connection/views/connection_view.dart';
+
 import '../modules/chatroom/bindings/chatroom_binding.dart';
 import '../modules/chatroom/views/chatroom_view.dart';
 import '../modules/contact/bindings/contact_binding.dart';
@@ -55,6 +58,11 @@ class AppPages {
       name: _Paths.CONTACT,
       page: () => const ContactView(),
       binding: ContactBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONNECTION,
+      page: () => const ConnectionView(),
+      binding: ConnectionBinding(),
     ),
   ];
 }

@@ -93,7 +93,6 @@ class HomeView extends GetView<HomeController> {
 
   FloatingActionButton floatingButton() {
     return FloatingActionButton(
-      mini: true,
       child: const Icon(Icons.chat),
       onPressed: () {
         Get.toNamed(Routes.CONTACT);

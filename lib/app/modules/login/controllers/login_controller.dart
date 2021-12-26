@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/app/data/firebase/auth_user.dart';
 import 'package:flash_chat/app/data/firebase/database_method.dart';
@@ -99,8 +100,16 @@ class LoginController extends GetxController {
     }
   }
 
+// cek connection
+
   @override
   void onReady() {
+    Connectivity().onConnectivityChanged.listen((event) {
+      if (event == ConnectivityResult.none) {
+        Get.toNamed(Routes.CONNECTION);
+      }
+    });
+    //
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
         // ignore: avoid_print
