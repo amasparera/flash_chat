@@ -50,6 +50,8 @@ class SearchView extends GetView<SearchController> {
                   )
                 : Center(
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: const [
                         Icon(Icons.search),
                         Text('Seacrh user by "name"'),

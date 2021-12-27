@@ -110,11 +110,13 @@ class HomeView extends GetView<HomeController> {
       onTap: () async {
         Get.toNamed(Routes.CHATROOM, arguments: list[0]);
       },
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(
-          doc.profile2!,
-        ),
-      ),
+      leading: (doc.profile2 != '')
+          ? CircleAvatar(
+              backgroundImage: NetworkImage(doc.profile2!),
+            )
+          : const CircleAvatar(
+              child: Icon(Icons.person),
+            ),
       title: Text(doc.name2!),
       subtitle: Text(doc.lastMessage ?? '',
           overflow: TextOverflow.ellipsis,

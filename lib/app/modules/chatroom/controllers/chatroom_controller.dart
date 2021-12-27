@@ -7,7 +7,9 @@ import 'package:random_string/random_string.dart';
 
 class ChatroomController extends GetxController {
   ScrollController scroll = ScrollController();
-
+  void lastpesan() {
+    scroll.jumpTo(scroll.position.maxScrollExtent);
+  }
   // chatroom
 
   late String myName, myProfile, myUsername, myEmail, myId;
@@ -96,6 +98,15 @@ class ChatroomController extends GetxController {
   @override
   void onInit() {
     getMyInfo();
+
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      lastpesan();
+    });
+    super.onReady();
   }
 }

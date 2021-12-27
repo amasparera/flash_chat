@@ -59,6 +59,7 @@ class ChatroomView extends GetView<ChatroomController> {
               splashRadius: 20,
               onPressed: () {
                 controller.addMassage(true);
+                // controller.lastpesan();
               },
               icon: const Icon(
                 Icons.send,

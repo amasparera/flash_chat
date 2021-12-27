@@ -5,6 +5,7 @@ import 'package:flash_chat/app/data/firebase/database_method.dart';
 import 'package:flash_chat/app/data/getstoragedb/instalansi.dart';
 import 'package:flash_chat/app/data/getstoragedb/user_db.dart';
 import 'package:flash_chat/app/data/model/user.dart';
+import 'package:flash_chat/app/modules/chatroom/controllers/chatroom_controller.dart';
 import 'package:flash_chat/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:random_string/random_string.dart';
@@ -142,6 +143,7 @@ class HomeController extends GetxController {
         Get.toNamed(Routes.CONNECTION);
       }
     });
+    Get.put(ChatroomController, permanent: true);
     super.onReady();
   }
 }

@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "510749148846-bq0ip7f8pf4ugtosf1v4kuohsgc17skj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.amasparera.flash_chat",
+            "certificate_hash": "5b488c6199a5da5bcc149b95612494771ffedd44"
+          }
+        },
+        {
+          "client_id": "510749148846-gnkdjftqvmq7m23ttqetlj9hub48euit.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.amasparera.flash_chat",
+            "certificate_hash": "843070e1bc3297313b7c5e1d533eb4942dd0e5ef"
+          }
+        },
+        {
           "client_id": "510749148846-4ke3n2h34446i3ekmnnb2nk8j4c0efpv.apps.googleusercontent.com",
           "client_type": 3
         }

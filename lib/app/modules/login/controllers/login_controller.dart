@@ -51,6 +51,7 @@ class LoginController extends GetxController {
         UserDb().saveDisplayName(model.name);
         UserDb().saveUserProfile(model.profileUrl);
         UserDb().saveUserName(email.text.replaceAll('@gmail.com', ''));
+        Get.offAndToNamed(Routes.HOME);
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -84,7 +85,9 @@ class LoginController extends GetxController {
           'username': email.text.replaceAll('@gmail.com', '')
         };
 
-        DatabaseMethod().addUserInfoToDb(credential.user!.uid, userData);
+        DatabaseMethod()
+            .addUserInfoToDb(credential.user!.uid, userData)
+            .then((value) => Get.offAndToNamed(Routes.HOME));
       } else {
         return;
       }
@@ -110,14 +113,6 @@ class LoginController extends GetxController {
       }
     });
     //
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user == null) {
-        // ignore: avoid_print
-        print('User is currently signed out!');
-      } else {
-        Get.offAndToNamed(Routes.HOME);
-      }
-    });
 
     super.onReady();
   }
